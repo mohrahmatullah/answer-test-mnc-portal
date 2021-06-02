@@ -1,4 +1,4 @@
-# Konsep OOP
+# Program Konsep OOP
 Program konsep OOP untuk manajemen data berikut database (article)
 sederhana untuk mengelola sebuah berita dengan fungsi CRUD dan pencarian,
 tampilkan data berdasarkan urutan tanggal pusbish terakhir.
