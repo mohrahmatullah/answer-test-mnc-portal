@@ -1,0 +1,681 @@
+=== STEP 1 ===
+1. Buatlah sebuah fungsi untuk mendapatkan nama subdomain “olahraga” dari URL berikut https://olahraga.okezone.com/2021/05/soal-test
+	Jawab : 
+	<?php
+		$url = 'https://olahraga.okezone.com/2021/05/soal-test';
+		$parsedUrl = parse_url($url);
+		$host = explode('.', $parsedUrl['host']);
+		$subdomain = $host[0];
+		echo $subdomain;
+	?>
+2. Jelaskan perbedaan =, ==, dan ===
+	Jawab : 
+	Tanda = yang hanya satu buah biasanya digunakan untuk mentukan nilai suatu varibel, atau bisa dibilang mengisi variabel dengan nilai tertentu. Berikut Contohnya:
+	<?php
+	 
+	    $nilai = "Halo Dunia!"; //Nilai variabel $nilai berisi Halo Dunia!
+	    // tanda = bertujuan untuk memberi nilai pada variabel
+	 
+	?>
+
+	Tanda == berfungsi untuk membandingkan 2 variabel atau lebih tanpa memperhatikan jenis nilainya, contoh:
+	<?php
+	   
+	/*Percobaan 1*/
+	    $var1 = 3;
+	    $var2 = 3;
+	    var_dump($var1==$var2);
+	 
+	    //Output = true
+	 
+	/*Percobaan 2*/
+	    $var1 = "3"; //Nilai berjenis string
+	    $var2 = 3; //Nilai berjenis integer
+	    var_dump($var1==$var2);
+	 
+	    //Output = true
+	?>
+
+
+	tanda === berfungsi untuk membandingkan 2 variabel atau lebih DENGAN memperhatikan jenis nilainya, contoh:
+	<?php
+	 
+	/*Percobaan 1*/
+	    $var1 = 3; //Nilai berjenis integer
+	    $var2 = 3; //Nilai berjenis integer
+	    var_dump($var1===$var2);
+	 
+	    //Output = true
+	 
+	/*Percobaan 1*/
+	    $var1 = "3"; //Nilai berjenis string
+	    $var2 = 3; //Nilai berjenis integer
+	    var_dump($var1===$var2);
+	 
+	    //Output = false
+	?>
+
+	Kesimpulan:
+
+	= Berfungsi untuk mengisi nilai pada variabel
+	== Berfungsi untuk membandingkan 2 variabel atau lebih tanda memperhatika jenis nilainya
+	=== berfungsi untuk membandingkan 2 variabel atau lebih dengan memperhatikan jenis nilainya.
+
+3. Jelaskan fungsi dan pemakaian if else, while, while do, switch case, for, foreach ?
+	Jawab : 
+	Statement kontrol IF atau bisa juga disebut Logika IF (Pengandaian/Bersyarat). Untuk memudahkan pemahaman tentang Logika IF.
+	a. IF ELSE
+
+		bentuk IF ELSE Seperti dibawah ini :
+		if (syarat) 
+		{ 
+		   statement 1 
+		}
+		else 
+		{ 
+		   statement 2 
+		}
+
+		Bentuk IF ELSE di atas, statement 1 akan dijalankan apabila nilai ‘syarat’ adalah BENAR. Sedangkan bila ‘syarat’ bernilai SALAH maka yang dijalankan adalah statement 2.
+		Contoh script:
+		<?php
+		   $bil = 10;
+		   if ($bil == 10)
+		   {
+		      echo "Bilangan sama dengan 10";
+		   }
+		   else
+		   {
+		      echo "Bilangan tidak sama dengan 10";
+		   }
+		?>
+		Script di atas akan menampilkan “Bilangan sama dengan 10“.  Coba test apa yang terjadi kalau variable $bil nilainya diganti dengan angka selain 10. Teks yang akan ditampilkan tentu saja “Bilangan tidak sama dengan 10”.
+
+	b. While
+		Penulisan perulangan while pada PHP dapat menggunakan kurung kurawal, colon, atau tanpa keduanya seperti dibwah ini :
+		Kurung Kurawal, paling umum digunakan
+		while (expression) {
+		    statement;
+		}
+
+		Colon
+		while (expression) :
+		    statement;
+		endwhile;
+
+		Tanpa Kurung Kurawa maupun colon
+		while (expression)
+		    statement;
+
+		true, maka blok statement akan dijalankan, selanjutnya PHP akan kembali lagi mengecek nilai expression, jika bernilai TRUE, PHP kembali menjalankan statement, begitu seterusnya.
+	 	false, maka perulangan berhenti.
+
+	 	Kelebihan penggunaan colon
+
+		Penggunaan colon yang diakhiri dengan endwhile bermanfaat untuk memudahkan kita mengidentifikasi akhir dari statement while dibanding hanya tanda kurung tutup ( } ), terutama ketika kode yang kita tulis panjang, disamping itu, juga bermanfaat ketika kode yang kita tulis merupakan kombinasi antara HTML dan PHP.
+		Ketika while loop sedang berjalan, terkadang kita ingin meng-skip nya pada nilai tertentu, untuk melakukannya gunakan keyword continue, contoh:
+		<?php
+		$i = 1;
+		while ($i <= 10) {    
+			if ($i == 5) {
+				$i++;
+				continue;
+			}
+			echo $i++; // 1234678910 - tidak termasuk nomor 5
+		}
+		?>
+	c. Do-While
+		Penulisan struktur do-while mirip dengan struktur while, namun kita menambahkan perintah do di awal struktur. Berikut adalah format dasar penulisan struktur do-while dalam PHP:
+		do {
+		    statement;
+		    statement;
+		} while (condition);
+
+		Setelah perintah do, di dalam blok kurung kurawal adalah statement. Statement adalah kode program yang akan diulang. Kita bisa membuat beberapa kode program untuk menampilkan perintah seperti echo, atau perintah yang lebih kompleks. Namun di dalam bagian ini harus ada baris program yang digunakan sebagai ’penghenti’ perulangan.
+
+		Condition adalah kondisi yang harus dipenuhi agar perulangan berlangsung. Selama condition bernilai TRUE, maka perulangan akan terus dilakukan. Condition ini akan diperiksa pada tiap perulangan, dan hanya jika hasilnya FALSE, maka proses perulangan berhenti.
+
+		Sebagai contoh sederhana perulangan do-while, berikut adalah kode perulangan untuk menampilkan angka 1 sampai dengan 10 pada web browser:
+		<?php
+		$i=1;
+		do
+		{
+		  echo "$i";
+		  echo "<br />";
+		  $i=$i+1;
+		} while ($i <= 10);
+		?>
+	d. switch case
+		Berikut ini contoh penggunaan logika switch case:
+		<?php 
+
+			switch (variable) 
+			{ 
+			    case 'nilai1': 
+			        # pernyataan... 
+			        break; 
+			    case 'nilai2': 
+			        # pernyataan... 
+			        break; 
+			    default: 
+			        # pernyataan... 
+			        break; 
+			} 
+
+		?>
+		proses switch dapat mengeksekusi perintah yang dijalankan.
+
+		Pertama program akan memeriksa nilai dari variabel pada switch.
+		Selanjutnya program akan mengeksekusi masing-masing case apakah sesuai dengan nilai variabel yang diberikan.
+		Apabila nilai variabel terdapat pada salah satu case maka proses eksekusi akan dihentikan dengan perintah break.
+		Apabila nilai variabel tidak terdapat pada salah satu case maka proses akan berakhir pada perintah default.
+
+	e. for
+		Untuk menampilkan dan memproses data dari array, contoh :
+		<?php
+		$nama = array("Andri","Joko","Sukma","Rina","Sari");
+		 
+		for ($i=0; $i <5; $i++)
+		{
+		   echo "$nama[$i]";
+		   echo "<br />";
+		}
+		?>
+
+	f. foreach
+		cara alternatif lain untuk menampilkan array, dengan menggunakan perulangan foreach:
+		contoh:
+		<?php
+		$nama = array("Andri","Joko","Sukma","Rina","Sari");
+		 
+		foreach ($nama as $val)
+		{
+		   echo "$val";
+		   echo "<br />";
+		}
+		?>
+		Perulangan foreach diatas akan menampilkan semua isi array dengan perintah yang lebih singkat daripada menggunakan perulangan for.
+
+4. Jelaskan perbedaan method=”Post” dan “Get”?
+	Jawab : 
+	Method POST akan mengirimkan data atau nilai langsung ke action untuk ditampung, tanpa menampilkan pada URL.
+	Sedangkan method GET akan menampilkan data/nilai pada URL, kemudian akan ditampung oleh action.
+
+	Method POST menggunakan variable $_POST untuk menampung data/nilai.
+	contoh:
+	$data = $POST['nama'];
+	echo $data;
+
+	Sedangkan method GET menggunakan variable $_GET untuk menampung data/nilai.
+
+	contoh:
+	$data = $GET['nama'];
+	echo $data;
+
+	Method POST data yang dikirim tidak terbatas. Sedangkan method GET tidak boleh lebih dari 2047 karakter.
+
+5. Jelaskan tentang OOP dan apa kelebihan?
+	Jawab : 
+	OOP adalah paradigma pemrograman yang berorientasi object
+
+	Pembuatan program dengan orientasi object memiliki Kelebihan:
+	a.Improved software-development productivity
+		– Modularity : Pembuatan program dengan membuat modul-modul berupa object
+		– Flexibility : Sistem Program dapat dimodifikasi tanpa melibatkan banyak modul, hanya object yang terlibat saja.
+		– Extensibility : Class Object dapat dikembangkan dengan menambahkan attributes dan behaviors baru.
+		– Expandability : Sistem Program dapat dikembangankan sampai skala yang paling kompleks (large scale software system).
+		– Reusability : Class Object dipakai lagi pada lintas aplikasi program
+	b. Improved software maintainability
+		Karena design-nya modular, bagian dari software system dapat dengan mudah di-maintain jika ada perubahan meskipun dalam skala yang besar.
+	c. Faster development
+		OOP disupport oleh banyak library object yang reusable, sehingga mempercepat penyelesaian program dan juga project berikutnya.
+	d. Lower cost of development
+		Faster development tentu akan mengurangi biaya pengembangan proyek software.
+	e. Higher-quality software
+		Faster development akan memberikan lebih banyak waktu dan resource untuk melakukan proses verification software. Banyak library object yang digunakan juga sudah teruji.
+
+6. Jelaskan mengenai MVC, berikan contoh ?
+	Jawab : 
+	MVC adalah konsep arsitektur dalam pembangunan aplikasi berbasis web yang membagi aplikasi web menjadi 3 bagian besar. Yang mana setiap bagian memiliki tugas-tugas serta tanggung jawab masing-masing. Tiga bagian tersebut adalah: model, view dan controller.
+
+	Model: Bertugas untuk mengatur, menyiapkan, memanipulasi dan mengorganisasikan data (dari database) sesuai dengan instruksi dari controller.
+	View: Bertugas untuk menyajikan informasi (yang mudah dimengerti) kepada user sesuai dengan instruksi dari controller.
+	Controller: Bertugas untuk mengatur apa yang harus dilakukan model, dan view mana yang harus ditampilkan berdasarkan permintaan dari user. Namun, terkadang permintaan dari user tidak selalu memerlukan aksi dari model. Misalnya seperti menampilkan halaman form untuk registrasi user.
+
+	Contoh Kasus
+	Ketika anda memasuki perpustakaan kemungkinan anda diminta untuk mengisi buku tamu. Kebetulan buku tamu di perpustakaan yang anda kunjungi menggunakan aplikasi web. Jadi di sana sudah terdapat satu komputer, di mana setiap pengunjung perpustakaan harus melewati dan mengisi datanya melalui komputer tersebut.
+
+	Ketika anda melihat layar komputer, di sana ditampilkan form untuk mengisi data diri pengunjung. Kita bisa simpulkan bahwa di sini, browser (sebagai client) meminta aksi kepada server (yang ditangani oleh controller) untuk menampilkan halaman form input data. Lalu controller memutuskan dan mengerti bahwasanya ia hanya perlu menampilkan view. Maka controller memanggil dan mengembalikan view (atau halaman) yang diminta.
+	Anda kemudian mengisi data. Lalu menekan tombol submit. Di sini browser (sebagai client) mengirimkan data anda kepada server. Data itu ditangkap oleh controller dan controller tahu apa yang harus dia lakukan. Yaitu memanggil model dan memberi data tersebut untuk kemudian disimpan (oleh model) ke dalam database. Setelah proses penyimpanan selesai, controller memanggil dan mengembalikan view kepada user sebagai informasi bahwa data telah masuk.
+	Jika ada pengunjung baru, maka kembali ke step 1.
+
+7.  Apa yang di maksud dengan constructor, method, class, object, variabel, parameter, function, procedure.
+	Jawab : 
+	a. Method
+		Method adalah tindakan yang bisa dilakukan di dalam class. Jika menggunakan analogi class laptop kita, maka contoh method adalah: menghidupkan laptop, mematikan laptop, mengganti cover laptop, dan berbagai tindakan lain.
+		Method pada dasarnya adalah function yang berada di dalam class. Seluruh fungsi dan sifat function bisa diterapkan ke dalam method, seperti argumen/parameter, mengembalikan nilai (dengan keyword return), dan lain-lain.
+		Berikut adalah contoh penulisan class dengan penambahan method:
+		<?php
+		class laptop {
+		   function hidupkan_laptop() {
+		   //... isi dari method hidupkan_laptop
+		   }
+		 
+		   function matikan_laptop() {
+		   //... isi dari method matikan_laptop
+		   }
+		 
+		   ... //isi dari class laptop
+		}
+		?>
+
+		Dari contoh di atas, function hidupkan_laptop() dan function matikan_laptop() adalah method dari class laptop. Seperti yang kita lihat, bahwa penulisan method di dalam PHP sama dengan cara penulisan function. Sebuah class tidak harus memiliki method.
+
+	b. class
+		Object atau Objek adalah hasil cetak dari class, atau hasil ‘konkrit’ dari class. Jika menggunakan analogi class laptop, maka objek dari class laptop bisa berupa: laptop_andi, laptop_anto, laptop_duniailkom, dan lain-lain. Objek dari class laptop akan memiliki seluruh ciri-ciri laptop, yaitu property dan method-nya.
+
+		Proses ‘mencetak’ objek dari class ini disebut dengan ‘instansiasi’ (atau instantiation dalam bahasa inggris). Pada PHP, proses instansiasi dilakukan dengan menggunakan keyword ‘new’. Hasil cetakan class akan disimpan dalam variabel untuk selanjutnya digunakan dalam proses program.
+
+		Sebagai contoh, berikut adalah cara membuat objek laptop_andi dan laptop_anto yang dibuat dari class laptop:
+		<?php
+		class laptop {
+		   //... isi dari class laptop
+		   }
+		 
+		$laptop_andi = new laptop();
+		$laptop_anto = new laptop();
+		?>
+		Dari contoh di atas, $laptop_andi dan $laptop_anto merupakan objek dari class laptop. Kedua objek ini akan memiliki seluruh property dan method yang telah dirancang dari class laptop.
+
+	c. Constructor
+
+		Constructor adalah method atau function yang otomatis akan dijalankan saat class diinstansiasi (dibuat sebuah object), pada bagian constructor kita dapat melakukan apapun yang bisa dilakukan dalam method / function kecuali mengembalikan nilai / return value.
+		contoh penggunaan Constructor di PHP:
+		<?php 
+		class komputer
+		{
+			public $prosesor;
+			public $memory;
+		 
+			public function __construct($prosesor,$memory = "4 GB")
+			{
+				$this->prosesor = $prosesor;
+				$this->memory = $memory;
+			}
+		 
+		}
+		 
+		$komputer_budi = new komputer("Core i7","2 GB");
+		echo $komputer_budi->prosesor;
+		echo " | ";
+		echo $komputer_budi->memory;
+		?>
+
+		- Jika skrip tersebut dijalankan akan menampilkan tulisan : Core i7 | 2 GB
+		- Perhatikan pada line 7, kita menuliskan perintah public function __construct($prosesor,$memory = “4 GB”), perintah tersebut digunakan untuk membuat method construct yang akan dijalankan saat class diinstansiasi atau dibuat object.
+		- Dimana pada method construct kita menset 2 parameter yaitu prosesor, dan memory, dimana pada method construct kita menjadikan nilai yang diberikan di parameter menjadi nilai di property class komputer, yaitu property prosesor dan memory ( Line 9 & 10 )
+		- Perhatikan pada line 15 saat kita membuat object dengan class komputer, kita perlu menuliskan 2 parameter yang telah kita set di bagian method __construct, dalam hal ini yang wajib anda tuliskan hanya 1 parameter, karena parameter memory kita sudah set nilai defaultnya yaitu 4 GB.
+		- Pada contoh line 15 kita menuliskan $komputer_budi = new komputer(“Core i7″,”2 GB”); yang artinya akan memberikan nilai “Core i7” pada paremeter prosesor, dan “2 GB” pada paremeter memory, yang otomatis nilai ini akan dijadikan nilai dari property $prosesor, dan property $memory.
+		- Sehingga pada line 16 saat kita mengakses nilai dari property prosesor akan menampilkan tulisan “Core i7”, dan property memory (line 17) akan menampilkan tulisan “2 GB”.
+
+	d. object
+		object adalah benda nyata atau realisasi yang dibuat berdasarkan rancangan yang sudah didefinisikan dalam class.
+		object adalah hasil real atau konkrit dari class. Jika kita lanjutkan analogi kita pada tulisan ini maka object dari class laptop bisa berupa: laptop_budi, laptop_lukman, laptop_agus dan lain sebagainya. Jadi objek dari class laptop ini nantinya akan memiliki seluruh ciri-ciri laptop yang berupa properti dan method-nya.
+
+	e. variabel
+		Variabel dalam suatu program digunakan untuk menyimpan suatu nilai (value) atau data yang dapat digunakan nanti dalam suatu program
+		contoh :
+		<? php
+			$a = 'rahmat';
+		?>
+		nilai dari variabel a adalah rahmat
+
+	f. parameter
+		parameter yang memiliki nilai awal, atau nilai default.
+		Sebagai contoh, misalkan kita membuat fungsi sederhana:
+		tambah(). Fungsi ini membutuhkan 2 buah parameter, yakni nilai yang ingin ditambahkan. Berikut adalah contoh programnya:
+		<?php
+		function tambah($a,$b)
+		{
+		   return $a+$b;
+		}
+		 
+		echo tambah(2,3); // hasil: 5
+		echo tambah(3,4); // hasil: 7
+		?>
+
+	g. function
+		Function adalah kode program yang dirancang untuk menyelesaikan sebuah tugas tertentu, dan merupakan bagian dari program utama
+		Sebagai contoh, PHP menyediakan fungsi akar kuadrat, yakni sqrt(), berikut adalah cara penggunaannya:
+		<?php
+		$akar_kuadrat = sqrt(49);
+		echo "Akar kuadrat dari 49 adalah $akar_kuadrat";
+		// Akar kuadrat dari 49 adalah 7
+		?>
+		Dalam contoh diatas, fungsi sqrt() akan menghitung akar kuadrat dari nilai argumen yang diinput. Saya menambahkan argumen 49 sebagai inputan.
+
+		Nilai hasil dari fungsi sqrt(49), selanjutnya di tampung dalam variabel $akan_kuadrat, yang kemudian ditampilkan ke dalam web browser.
+
+	h. procedure
+		Prosedur juga merupakan sebuah perintah yang dapat digunakan untuk membagi beberapa keadaan dan kasus dalam suatu kumpulan perintah yang lebih kecil dangan berbagai kelengkapan di dalamnya baik itu pemeriksaan kondisi, fungsi matematika maupun fungsi string. Prosedur itu sendiri tidak dapat mengembalikan nilai.
+		<?php
+				echo ini_prosedur() ;
+		?>
+8. Sebutkan dan jelaskan tipe-tipe error dalam PHP
+	Jawab : 
+	1. Parse Errors (syntax errors)
+		contoh:
+		<?php
+		echo "Cat";
+		echo "Dog"
+		echo "Lion";
+		?>
+
+		Pada kode di atas kita tidak menuliskan titik koma di baris kedua. Ketika itu akan ada terjadinya parse error atau sintax error yang menghentikan eksekusi script.
+	2. Fatal Errors
+		Fatal error terjadi ketika PHP mengerti kode yang telah ditulis, namun apa yang diminta oleh kode tidak dapat dilakukan. Fatal error akan menghentikan eksekusi script. Jika Kamu mencoba untuk mengakses fungsi yang belum didefinisikan, maka outputnya adalah fatal error.
+		contoh:
+		<?php
+		function fun1() {
+		    echo "CodePolitan";
+		}
+
+		fun2();
+
+		echo "Fatal Error !!";
+		?>
+		Pada kode di atas kita mendefinisikan fungsi fun1() tapi kita memanggil fungsi lain yaitu fun2() yang mana belum terdefinisi.
+	3. Warning Errors
+		Warning error tidak akan menghentikan eksekusi dari script. Alasan utama dari warning error yaitu menyertakan file yang tidak ada atau mengisikan jumlah parameter yang tidak pas saat memanggil suatu fungsi.
+		<?php 
+		echo "Warning Error!!";
+		include ("welcome.php");
+		?>
+		Pada kode di atas kita menyertakan file welcome.php, namun bila file tersebut tidak ada dalam direktori, maka akan muncul warning error. Tapi hal itu tidak akan menghentikan eksekusi script. Anda akan melihat pesan Warning Error!! diikuti pesan warning error
+	4. Notice Errors
+		Notice error sama hal nya dengan Warning Error yaitu ketika terjadi notice error eksekusi script tidak akan berhenti. Notice Error akan terjadi ketika kita mencoba untuk mengakses variabel yang belum didefinisikan.
+		Contoh:
+		<?php
+		$a="CodePolitan";
+		echo "Notice Error !!";
+		echo $b;
+		?>
+
+		Pada kode di atas kita mendefinisikan variabel yang bernama $a. Tapi kita malah memanggil variabel lain yaitu $b, yang tidak didefinisikan. Sehingga akan muncul notice error tapi eksekusi dari script tidak berhenti. Dan akan melihat pesan Notice Error !!.
+
+9. Apa itu Curl, dan sebutkan langkah-langkah penggunaan Curl di PHP.
+	Jawab : 
+	Curl adalah pustaka yang memungkinkan kita membuat permintaan HTTP dalam PHP
+	Langkah penggunaan Curl PHP
+	1. Buka file php.ini yang berada pada direktori “C:\xampp\php“. Pada contoh kasus ini Xampp Saya berada di drive C, jadi sesuaikan dengan lokasi instalasi Xampp Anda masing-masing.
+	2. Kemudian cari baris extension seperti berikut ini:
+		;extension=php_curl.dll 
+		atau 
+		;extension=curl
+	3. Hapus tanda titik koma (;) dan SAVE.
+	4. Restart Apache dan cek phpinfo();
+	Untuk melakukan pengecakan cURL sudah aktif atau belum, Anda bisa membuat script phpinfo(); seperti dibawah ini:
+	<?php phpinfo(); ?>
+	Lalu SAVE dan letakan di htdocs atau /var/www/html, kemudian cobalah buka melalui localhost di browser, atau jika Anda menggunakan Xampp biasanya phpinfo(); sudah tersedia di localhost.
+
+10. Jelaskan perbedaan mysql_fetch_row(), mysql_fetch_Array() dan mysql_fetch_assoc()
+	Jawab : 
+	1. mysql_fetch_array
+		mysql_fetch_array digunakan untuk menghasilkan array dari tabel dalam bentuk associative array dan/atau numeric array. Berikut ini adalah contoh output dari mysql_fetch_array.
+		Array(
+		[0] => 1
+		[id_skep] => 1
+		[1] => KEP-01/HC/2014
+		[no_skep] => KEP-01/HC/2014
+		[2] => 2014-12-28
+		[tgl_skep] => 2014-12-28
+		)
+
+	2. mysql_fetch_assoc
+		mysql_fetch_assoc digunakan untuk menghasilkan array dari tabel hanya dalam bentuk associative array. Berikut ini adalah contoh output dari mysql_fetch_assoc.
+		Array
+		(
+		[id_skep] => 1
+		[no_skep] => KEP-01/HC/2014
+		[tgl_skep] => 2014-12-28
+		)
+	3. mysql_fetch_row
+		mysql_fetch_row digunakan untuk menghasilkan array dari tabel hanya dalam bentuk numeric array. Berikut ini adalah contoh output dari mysql_fetch_row.
+		Array
+		(
+		[0] => 1
+		[1] => KEP-01/HC/2014
+		[2] => 2014-12-28
+		)
+
+11. Jelaskan perbedaan SQL vs NoSQL dan berikan contoh yang kamu ketahui
+	Jawab : 
+	1. Bahasa
+		perbedaan antara SQL dan NoSQL yang langsung dapat dilihat adalah bahasa query dari masing-masing database. Bahasa SQL adalah bahasa query yang terstruktur. Hal ini menyebabkan SQL menjadi agak terbatas.
+		Sebaliknya, database NoSQL tidak memiliki skema (setidaknya skemanya dapat berubah-ubah) dan tak terstruktur.
+	2. Skalabilitas
+		Hampir seluruh database SQL memiliki skala vertikal.
+		Ini berarti jika kita ingin mengembangkan database kita, yang dapat kita lakukan adalah menambah kapasitas muatan di satu server dengan meng-upgrade komponennya seperti RAM, kapasitas SSD, atau CPU. 
+		Sebaliknya, database NoSQL memiliki skala horizontal di mana jika kita ingin mengembangkan database kita, kita hanya perlu menambah server baru. Inilah mengapa NoSQL dipakai oleh perusahaan seperti Facebook yang memiliki jumlah pengguna sangat besar dan jenis data yang bermacam-macam.
+	3. Komunitas
+		segi komunitas, tentu saja SQL memiliki komunitas yang lebih besar dibandingkan NoSQL karena SQL sudah berumur puluhan tahun
+		Tapi walaupun begitu, perkembangan komunitas NoSQL sangat cepat. Lihat saja banyaknya tutorial MongoDB yang bertebaran di internet. Hadirnya stack seperti MEAN (MongoDB, Express JS, Angular JS, Node JS) atau MERN (MongoDB, Express JS, React JS, Node JS) membuktikan bahwa walaupun terbilang baru, NoSQL memiliki komunitas yang cukup dapat diandalkan.
+	4. Aplikasi
+		Seperti yang telah beberapa kali disebutkan bahwa SQL bersifat table-based di mana database ini cocok digunakan untuk aplikasi yang membutuhkan transaksi multi baris. Contoh dari aplikasi ini adalah sistem akuntansi dan mungkin legacy system yang pada awalnya dibuat untuk struktur relasional. Sedangkan untuk NoSQL, database jenis ini cocok digunakan untuk database yang membutuhkan data set yang besar seperti big data. NoSQL juga banyak dipakai aplikasi jejaring sosial atau customer management yang struktur datanya bisa berubah sewaktu-waktu tergantung dari perkembangan aplikasinya sendiri.
+
+12. Jelaskan perbedaan Cookies dan Session.
+	Jawab : 
+	Cookies:
+	1. Cookies disimpan di sisi klien
+	2. Cookies tidak aman bagi klien karena cookies dapat disisipi program yang tidak diketahi klien.
+	Karena cookies tidak aman maka browser klien dapat di-set untuk menghapus cookies dan bahkan men-disable fungsi cookies. Menurut sumber lain cookies juga tidak aman bagi sisi server karena cookies dapat di-edit oleh klien.
+	3. Data yang disimpan ke dalam metode cookies dapat bertahan lebih lama dan dapat diatur waktu expired-nya.
+
+	Session
+	1. Disimpan disisi server
+	2. Lebih aman karena tidak ada file yang dimasukan ke sisi klien
+	3. Setelah web browser klien dimatikan maka data yang disimpan metode session akan hilang dan waktu expired juga tidak dapat diatur.
+
+
+
+==== STEP 2 =====
+1. Jika ada angka 1-100
+	a. Buatlah urutan bilangan prima
+		Jawab : 
+		<?php
+		for($i=1;$i<=100;$i++){
+			    $a = 0;
+			for($j=1;$j<=$i;$j++){
+			  	if($i % $j == 0){ $a++;}
+			  	}
+			    if($a == 2){
+			                    echo $i.'<br>';
+			            }
+			}
+		?>
+	b. Buatlah urutan bilangan ganjil
+		Jawab : 
+		<?php
+		for ($ganjil = 1; $ganjil <= 100; $ganjil++) {
+		if ($ganjil % 2 == 1) {
+		 echo $ganjil ;
+		 }
+		}
+		?>
+
+	c. Buatlah urutan bilangan genap
+		Jawab : 
+		<?php
+		for($bil = 1; $bil <= 100; $bil++){
+		    if( ($bil % 2) == 0){
+		        echo "$bil Adalah Bilangan Genap<br>";
+		    }	
+		}
+		?>
+	d. Buatlah urutan angka kelipatan 5
+		Jawab : 
+		<?php
+		foreach(range(1, 100) as $number) {
+		  if ($number % 5 == 0) echo "$number";
+		  echo '<br>';
+		}
+		?>
+
+2. Buat pola segitiga siku-siku
+	X
+	XX
+	XXX
+	XXXX
+	XXXXX
+		Jawab : 
+
+	<?php
+	for ($i=1; $i<=5; $i++){
+	    for ($j=$i; $j>=1; $j--){
+	        echo "X";
+	    }echo "<br>";
+	}
+	?>
+
+3. Buat sebuah program curl sederhana berdasarkan dari API berikut untuk menampilkan sebuah data dalam bentuk tabel:
+	a. List user : https://reqres.in/api/users?page=2
+		Jawab : 
+		<?php
+			// persiapkan curl
+		    $ch = curl_init(); 
+
+		    // set url 
+		    curl_setopt($ch, CURLOPT_URL, "https://reqres.in/api/users?page=2");
+
+		    // return the transfer as a string 
+		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+		    // $output contains the output string 
+		    $output = curl_exec($ch); 
+
+		    // tutup curl 
+		    curl_close($ch);      
+
+		    // menampilkan hasil curl
+		    echo $output;
+		?>
+	b. Detail user : https://reqres.in/api/users/2
+		Jawab : 
+		<?php
+			// persiapkan curl
+		    $ch = curl_init(); 
+
+		    // set url 
+		    curl_setopt($ch, CURLOPT_URL, "https://reqres.in/api/users/2");
+
+		    // return the transfer as a string 
+		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+		    // $output contains the output string 
+		    $output = curl_exec($ch); 
+
+		    // tutup curl 
+		    curl_close($ch);      
+
+		    // menampilkan hasil curl
+		    echo $output;
+		?>
+
+4. Buatlah halaman login sederhana (tanpa database), menggunakan session.
+	Jawab : 
+
+	==file LOGIN.php==
+	<?php
+	session_start();
+	if(isset($_SESSION['email'])) {
+	    echo '<script>window.location.replace("./index.php");</script>';
+	} else {
+	?>
+	<center><h1>Form Login Tanpa Mysql</h1>
+	<form action="./ceklogin.php" method="post">
+	<input type="email" name="email" placeholder="Email" alt="email" required="required"/><br/>
+	<input type="password" name="password" placeholder="Password" alt="password" required="required"/><br/><br/>
+	<input type="submit" name="submit" value="Submit" alt="submit"/>
+	</form><br/>
+	<h4>Copyright &copy; <font color="red" alt="inwepo.co">inwepo.co</font> & <font color="red" alt="Faraaz">Faraaz</font></h4>
+	</center>
+	<?php } ?>
+
+	==file CEKLOGIN.php==
+	<?php
+	session_start();
+	if(isset($_SESSION['email'])) {
+	    echo '<script>window.location.replace("./index.php");</script>';
+	} else {
+		$email = "rahmat@email.co";
+		$password = "123456";
+		if(isset($_POST['email']) && isset($_POST['password'])) {
+		    if($_POST['email'] == $email && $_POST['password'] == $password) {
+		        session_start();
+		        $_SESSION['email'] = $_POST['email'];
+		        $_SESSION['password'] = $_POST['password'];
+		        echo '<meta http-equiv="refresh" content="2; url=./index.php"/>';
+		        echo "<center><h1>Berhasil, dalam 2 detik kamu akan dialihkan ke halaman utama</h1></center>";
+		    } elseif($_POST['email'] != $email && $_POST['password'] == $password) {
+		        echo "<center><h1>Gagal!, Email Salah</h1></center>";
+		    } elseif($_POST['email'] == $email && $_POST['password'] != $password) {
+		        echo "<center><h1>Gagal!, Password Salah</h1></center>";
+		    } elseif($_POST['email'] != $email && $_POST['password'] != $password) {
+		        echo "<center><h1>Gagal!, Email & Password Salah</h1></center>";
+		    } 
+		} else {
+		    echo "<center><h1>Gagal!, jangan biarkan email & password kosong</h1></center>";
+		}
+	}
+	?>
+
+	==file LOGOUT.php==
+	<?php
+	session_start();
+	if(isset($_SESSION['email'])) {
+	    session_destroy();
+	    ?>
+	    <meta http-equiv="refresh" content="2; url=./login.php"/>
+	    <center><h2>Berhasil Logout</h2>kamu akan dialihkan kembali ke halaman login dalam 2 detik</center>
+	    <?php
+	} else {
+	    ?>
+	    <meta http-equiv="refresh" content="2; url=./login.php"/>
+	    <center><h2>Gagal Logout</h2>Silahkan login terlebih dahulu<br/><br/>kamu akan dialihkan kembali ke halaman login dalam 2 detik</center>
+	    <?php
+	}
+	?>
+
+	==file INDEX.php==
+	<?php
+	session_start();
+	if(isset($_SESSION['email'])) {
+	// ----------------------------------CONTENT HERE---------------------------------- //
+	    echo '<center><h1>Selamat Datang ;)</h1><br/><a href="./logout.php">Logout</a>';
+	// ----------------------------------CONTENT HERE---------------------------------- //
+	} else {
+	    echo '<script>window.location.replace("./login.php");</script>';
+	}
+	?>
+
+
+5. 
+	Jawab : Hasil dari kode yang ada di soal adalah 8,
+	Penjelasannya, karena yang ditampilkan hanya di variabel $x, untuk yang ada di function data() tidak di tampilkan, jika diberikan syntax echo data(); maka yang ada di function data() akan tampil.
+	
+	
+	
+(	
+Buatlah sebuah program konsep OOP untuk manajemen data berikut database (article)
+sederhana untuk mengelola sebuah berita dengan fungsi CRUD dan pencarian,
+tampilkan data berdasarkan urutan tanggal pusbish terakhir.
+TABLE
+id int(10) primary_key AI
+title varchar(150) not null
+description varchar(200) not null
+content TEXT
+publish_date date not null
+
+
+Ini saya buatkan dalam bentuk aplikasi menggunakan codeigniter
+)
