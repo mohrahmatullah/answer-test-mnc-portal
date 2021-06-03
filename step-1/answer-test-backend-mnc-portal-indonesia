@@ -584,7 +584,7 @@
 4. Buatlah halaman login sederhana (tanpa database), menggunakan session.
 	Jawab : 
 
-	==file LOGIN.php==
+	==file login.php==
 	<?php
 	session_start();
 	if(isset($_SESSION['email'])) {
@@ -600,7 +600,7 @@
 	</center>
 	<?php } ?>
 
-	==file CEKLOGIN.php==
+	==file ceklogin.php==
 	<?php
 	session_start();
 	if(isset($_SESSION['email'])) {
@@ -628,7 +628,7 @@
 	}
 	?>
 
-	==file LOGOUT.php==
+	==file logout.php==
 	<?php
 	session_start();
 	if(isset($_SESSION['email'])) {
@@ -645,7 +645,7 @@
 	}
 	?>
 
-	==file INDEX.php==
+	==file index.php==
 	<?php
 	session_start();
 	if(isset($_SESSION['email'])) {
