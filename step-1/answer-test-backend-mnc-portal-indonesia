@@ -660,7 +660,7 @@
 
 5. 
 	Jawab : Hasil dari kode yang ada di soal adalah 8,
-	Penjelasannya, karena yang ditampilkan hanya di variabel $x, untuk yang ada di function data() tidak di tampilkan, jika diberikan syntax echo data(); maka yang ada di function data() akan tampil.
+	Penjelasannya, karena yang ditampilkan hanya di variabel $x, untuk syntax yang ada di function data() tidak di tampilkan, jika diberikan syntax echo data(); maka syntax yang ada di function data() akan tampil.
 	
 	
 	
