@@ -49,10 +49,17 @@
 
 							<div class="form-group">
 								<label for="publish_date" class="control-label col-sm-2">publish date </label>
-								<div class="col-sm-10">
+								<div class="input-group date" data-provide="datepicker">
+									  <input type="text" name="publish_date" value="<?php echo set_value('publish_date', $db->publish_date); ?>" class="form-control">
+									  <div class="input-group-addon">
+									      <span class="glyphicon glyphicon-th"></span>
+									  </div>
+									  <?php echo form_error('publish_date'); ?>
+								</div>
+								<!-- <div class="col-sm-10">
 									<input type="date" class="form-control" name="publish_date" value="<?php echo set_value('publish_date', $db->publish_date); ?>">
 									<?php echo form_error('publish_date'); ?>
-								</div>
+								</div> -->
 							</div>
 
 							<div class="form-group">
@@ -68,4 +75,5 @@
 			</div>
 		</div>
 	</div>
+
 </section>

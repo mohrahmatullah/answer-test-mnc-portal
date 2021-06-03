@@ -47,7 +47,7 @@ class Home extends CI_Controller
 		{
 			$this->post_model->tambah_post();
 			$this->session->set_flashdata('input_sukses','Data posts berhasil di input');
-			redirect(current_url());
+			redirect('/home/lihatdata');
 		}
 	}
 
